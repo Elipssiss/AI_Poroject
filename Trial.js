@@ -1,15 +1,16 @@
 const CanvasSize = 1000
 const GridSize = 20
 const CellSize = 50
-const FR = 5
+const FR = 1
+var goal = {x:0, y:0}
 
 var agent = {x:0, y:0}
 
 function Goal(){
-    var x_goal = Math.round(Math.floor(Math.random()*GridSize*CellSize)/CellSize)*CellSize
-    var y_goal = Math.round(Math.floor(Math.random()*GridSize*CellSize)/CellSize)*CellSize
+    goal.x = Math.round(Math.floor(Math.random()*GridSize*CellSize)/CellSize)*CellSize
+    goal.y = Math.round(Math.floor(Math.random()*GridSize*CellSize)/CellSize)*CellSize
     fill(color(50, 168, 82))
-    rect(x_goal,y_goal,CellSize,CellSize)
+    rect(goal.x,goal.y,CellSize,CellSize)
 
 }
        
@@ -43,11 +44,11 @@ function printgrid(height, length, CellSize){
 
 function draw(){
     do{
-        agent.x += (Math.floor(Math.random()*3)-1)*50
-        agent.y += (Math.floor(Math.random()*3)-1)*50
+        agent.x += (Math.floor(Math.random()*3)-1)*CellSize
+        agent.y += (Math.floor(Math.random()*3)-1)*CellSize
         fill(color(102, 204, 255))
         rect(agent.x,agent.y,CellSize,CellSize)
     }
-    while (agent.x != x_goal && agent.y != y_goal);
+        while (agent.x != goal.x && agent.y != goal.y);
 
 }
